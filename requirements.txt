@@ -1,0 +1,9 @@
+streamlit
+langchain
+langchain-groq
+langchain-pinecone
+langchain-huggingface
+sentence-transformers
+pinecone-client
+python-dotenv
+groq
