@@ -1,4 +1,3 @@
-# Med_Bot
 # 🩺 MediAI – Intelligent Medical RAG Chatbot
 
 An AI-powered Medical Question-Answering system built using:
@@ -17,15 +16,15 @@ MediAI is a Retrieval-Augmented Generation (RAG) based medical chatbot that answ
 
 Instead of hallucinating responses like traditional LLMs, MediAI:
 
-1. Retrieves relevant information from medical PDFs
-2. Converts them into embeddings
-3. Stores them in Pinecone
-4. Uses Groq LLM to generate accurate answers
+1. Retrieves relevant information from medical PDFs  
+2. Converts them into embeddings  
+3. Stores them in Pinecone  
+4. Uses Groq LLM to generate accurate answers  
 
 This ensures:
-- Higher factual accuracy
-- Reduced hallucination
-- Context-aware medical responses
+- Higher factual accuracy  
+- Reduced hallucination  
+- Context-aware medical responses  
 
 ---
 
@@ -45,13 +44,13 @@ Final Answer
 
 ## 📂 Project Structure
 
-Medical_Chatbot/
-│
-├── rag_pipeline.py        # Core RAG backend
-├── app.py                 # Streamlit frontend (optional)
-├── .env                   # API Keys
-├── requirements.txt
-└── Data/                  # Medical PDF files
+Medical_Chatbot/  
+│  
+├── rag_pipeline.py        # Core RAG backend  
+├── app.py                 # Streamlit frontend (optional)  
+├── .env                   # API Keys  
+├── requirements.txt  
+└── Data/                  # Medical PDF files  
 
 ---
 
@@ -79,7 +78,7 @@ GROQ_API_KEY=your_groq_key
 
 ## 📦 Installation
 
-Install all dependencies:
+Install dependencies:
 
 ```bash
 pip install langchain
@@ -90,3 +89,105 @@ pip install sentence-transformers
 pip install pinecone-client
 pip install python-dotenv
 pip install streamlit
+```
+
+Or using requirements.txt:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🧠 How RAG Works in This Project
+
+1. PDFs are loaded using DirectoryLoader  
+2. Text is split into chunks (500 size, 20 overlap)  
+3. Chunks are converted into embeddings  
+4. Stored inside Pinecone  
+5. Query retrieves top-k similar chunks  
+6. Groq LLM generates response using retrieved context  
+
+---
+
+## ▶️ Running the Backend
+
+### First Time (Create Index from PDFs)
+
+```python
+from rag_pipeline import initialize_rag
+
+rag = initialize_rag("D:/Computer Science/Medical_Chatbot/Data")
+
+response = rag.invoke("What are symptoms of dengue?")
+print(response)
+```
+
+### Later (Load Existing Index)
+
+```python
+from rag_pipeline import initialize_rag
+
+rag = initialize_rag()
+
+response = rag.invoke("What is gigantism?")
+print(response)
+```
+
+---
+
+## 💻 Run Streamlit Frontend
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🏥 Example Queries
+
+- What are symptoms of dengue?
+- What is gigantism?
+- How is acne treated?
+- What causes high blood pressure?
+- What are complications of diabetes?
+
+---
+
+## 🔥 Features
+
+- ✅ Retrieval-Augmented Generation  
+- ✅ Reduced hallucination  
+- ✅ Fast Groq inference  
+- ✅ Scalable vector search  
+- ✅ Custom medical knowledge base  
+- ✅ Modular backend architecture  
+- ✅ Deployment-ready structure  
+
+---
+
+## 📈 Future Improvements
+
+- Streaming token-by-token responses  
+- Conversational memory  
+- Premium doctor dashboard UI  
+- Multi-document upload  
+- Hybrid search (BM25 + Vector)  
+- Medical citation highlighting  
+- Authentication system  
+
+---
+
+## ⚠️ Disclaimer
+
+This chatbot is for educational and research purposes only.  
+It does not replace professional medical advice.  
+
+Always consult a licensed healthcare provider.
+
+---
+
+## 👨‍💻 Author
+
+Viraj Agrawal  
+AI/ML Developer | RAG Systems Builder
