@@ -4,6 +4,6 @@ langchain-groq
 langchain-pinecone
 langchain-huggingface
 sentence-transformers
-pinecone-client
+pinecone
 python-dotenv
 groq
